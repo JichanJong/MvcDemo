@@ -1,0 +1,80 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+    @Scripts.Render("~/Scripts/angular.js")
+    
+</head>
+<body>
+    @*<div ng-app="myApp" class="row">
+        <input type="text" ng-model="name" />
+        {{name}}
+    </div>*@
+    @*<div ng-app="PersonApp" class="container">
+            <br />
+            <br />
+            <input type="text" placeholder="Search Person" ng-model="searchPerson" />
+            <br />
+            <div ng-controller="PersonController">
+                <table class="table">
+                    <tr ng-repeat="r in persons | filter : searchPerson">
+                        <td>{{r.Age}}</td>
+                        <td>{{r.Name}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>*@
+
+    <div ng-app="StudentApp" class="container">
+        <br />
+        <br />
+        <input type="text" placeholder="Search Student" ng-model="searchStudent" />
+        <br />
+        <div ng-controller="StudentController">
+            <table class="table">
+                <tr ng-repeat="r in students | filter : searchStudent">
+                    <td>{{r.Age}}</td>
+                    <td>{{r.Name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    @*<div ng-app="myApp" ng-controller="myCtrl">
+        <h1>{{carname}}</h1>
+    </div>*@
+
+    @*<script type="text/javascript">
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.carname = "Volvo";
+        });
+        var app2 = angular.module('myApp2', []);
+        app2.controller('myCtrl2', function ($scope) {
+            $scope.carname = "Volvo2";
+        });
+    </script>*@
+    
+
+
+    @*<div ng-app="myApp" ng-controller="myCtrl">
+
+        Full Name: {{firstName + " " + lastName}}
+
+    </div>*@
+
+    @*<script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+    </script>*@
+    <script src="~/Scripts/custom/PersonClient.js"></script>
+</body>
+</html>
