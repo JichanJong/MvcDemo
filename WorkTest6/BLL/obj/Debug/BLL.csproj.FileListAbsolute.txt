@@ -1,0 +1,9 @@
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\bin\Debug\BLL.dll.config
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\bin\Debug\BLL.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\bin\Debug\BLL.pdb
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\bin\Debug\kk.ORM.BLL.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\bin\Debug\kk.ORM.Interface.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\bin\Debug\kk.ORM.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\obj\Debug\BLL.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\BLL\obj\Debug\BLL.pdb

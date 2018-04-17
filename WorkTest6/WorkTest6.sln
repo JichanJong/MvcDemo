@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLazyLoad", "ControlLazyLoad\ControlLazyLoad.csproj", "{FC3AEFF5-A30A-4900-8842-8A328E1850E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{7FE94148-74DE-452F-AEA2-CFAD46589F9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{EA92F512-012F-4037-9A7E-776BA74CB9E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC3AEFF5-A30A-4900-8842-8A328E1850E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC3AEFF5-A30A-4900-8842-8A328E1850E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC3AEFF5-A30A-4900-8842-8A328E1850E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC3AEFF5-A30A-4900-8842-8A328E1850E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE94148-74DE-452F-AEA2-CFAD46589F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE94148-74DE-452F-AEA2-CFAD46589F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE94148-74DE-452F-AEA2-CFAD46589F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE94148-74DE-452F-AEA2-CFAD46589F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA92F512-012F-4037-9A7E-776BA74CB9E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA92F512-012F-4037-9A7E-776BA74CB9E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA92F512-012F-4037-9A7E-776BA74CB9E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA92F512-012F-4037-9A7E-776BA74CB9E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
