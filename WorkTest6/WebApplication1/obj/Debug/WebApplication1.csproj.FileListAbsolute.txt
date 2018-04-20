@@ -1,0 +1,6 @@
+E:\SourceCode\Work\CommonCollect\WorkTest6\WebApplication1\bin\WebApplication1.dll.config
+E:\SourceCode\Work\CommonCollect\WorkTest6\WebApplication1\bin\WebApplication1.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\WebApplication1\bin\WebApplication1.pdb
+E:\SourceCode\Work\CommonCollect\WorkTest6\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\SourceCode\Work\CommonCollect\WorkTest6\WebApplication1\obj\Debug\WebApplication1.dll
+E:\SourceCode\Work\CommonCollect\WorkTest6\WebApplication1\obj\Debug\WebApplication1.pdb

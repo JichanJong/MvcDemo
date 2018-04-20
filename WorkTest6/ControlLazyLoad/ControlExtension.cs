@@ -8,6 +8,7 @@ using kk.ORM.Model;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Columns;
 using kk.ORM.DB;
+using System.IO;
 
 namespace ControlLazyLoad
 {
@@ -86,17 +87,17 @@ namespace ControlLazyLoad
         {
             BindEvent(repositoryItemSearchLookUpEdit, displayMember, valueMember, pageIndex, pageSize, tableName, orderby);
         }
-
-
-
-
-
-        public static void BindData(this SearchLookUpEdit searchLookUpEdit, string displayMember, string valueMember, int pageIndex, int pageSize, DbFrom dbFrom, string orderBy, kkCondition defaultCondition, Func<string, kkCondition> filterCondition)
+        public static void BindData(this SearchLookUpEdit searchLookUpEdit, string displayMember, string valueMember, int pageIndex, int pageSize, DbFrom dbFrom, kkCondition defaultCondition, Func<string, kkCondition> filterCondition)
         {
-            BindEvent(searchLookUpEdit.Properties, displayMember, valueMember, pageIndex, pageSize, dbFrom, orderBy, defaultCondition, filterCondition);
+            BindEvent(searchLookUpEdit.Properties, displayMember, valueMember, pageIndex, pageSize, dbFrom, defaultCondition, filterCondition);
         }
 
-        private static void BindEvent(RepositoryItemSearchLookUpEdit properties, string displayMember, string valueMember, int pageIndex, int pageSize, DbFrom dbFrom,string orderBy, kkCondition defaultCondition, Func<string, kkCondition> filterCondition)
+        public static void BindData(this RepositoryItemSearchLookUpEdit repositoryItemSearchLookUpEdit, string displayMember, string valueMember, int pageIndex, int pageSize, DbFrom dbFrom, kkCondition defaultCondition, Func<string, kkCondition> filterCondition)
+        {
+            BindEvent(repositoryItemSearchLookUpEdit, displayMember, valueMember, pageIndex, pageSize, dbFrom, defaultCondition, filterCondition);
+        }
+
+        private static void BindEvent(RepositoryItemSearchLookUpEdit properties, string displayMember, string valueMember, int pageIndex, int pageSize, DbFrom dbFrom, kkCondition defaultCondition, Func<string, kkCondition> GetFilterCondition)
         {
             if (dbFrom == null)
             {
@@ -120,12 +121,13 @@ namespace ControlLazyLoad
                     string filterText = gv.FindFilterText;
                     if (string.IsNullOrEmpty(filterText))
                     {
-                        dataContainer.AddRange(bll.GetListByPager(dbFrom, originPageIndex, pageSize, out count, , orderby));
+                        dataContainer.AddRange(bll.GetListByPager(dbFrom, originPageIndex, pageSize, out count));
                     }
                     else
                     {
-                        kkCondition filterCondition = GetFileterCondition(gv, filterText);
-                        dataContainer.AddRange(bll.GetListByPager(tableName, pageIndex, pageSize, out count, filterCondition, orderby));
+                        kkCondition filterCondition = GetFilterCondition(filterText);
+                        dbFrom.TopDbFrom().Condition = filterCondition;
+                        dataContainer.AddRange(bll.GetListByPager(dbFrom, pageIndex, pageSize, out count));
                     }
                     gv.RefreshData();
                     gv.ApplyFindFilter(filterText);
@@ -133,12 +135,13 @@ namespace ControlLazyLoad
                 gv.TopRowChanged += (sender, e) =>
                 {
                     string filterText = gv.FindFilterText;
-                    kkCondition condition = string.IsNullOrWhiteSpace(filterText) ? emptyCondition : GetFileterCondition(gv, filterText);
+                    kkCondition condition = string.IsNullOrWhiteSpace(filterText) ? defaultCondition : GetFilterCondition(filterText);
+                    dbFrom.TopDbFrom().Condition = condition;
                     int pageCount = (count + pageSize - 1) / pageSize;
                     if (gv.IsRowVisible(gv.DataRowCount - 1) == RowVisibleState.Visible && pageIndex < pageCount)
                     {
                         pageIndex++;
-                        dataContainer.AddRange(bll.GetListByPager(tableName, pageIndex, pageSize, out count, condition, orderby));
+                        dataContainer.AddRange(bll.GetListByPager(dbFrom, pageIndex, pageSize, out count));
                         gv.RefreshData();
                         gv.ApplyFindFilter(filterText);
                     }
@@ -386,9 +389,15 @@ namespace ControlLazyLoad
         {
             if (destination != null)
             {
-                if (source.Rows.Count <= 0)
+                //直接new DataTable() 
+                if (source.Columns.Count <= 0)
                 {
-                    source = destination.Clone();   //拷贝架构
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        destination.WriteXmlSchema(ms);
+                        ms.Position = 0;
+                        source.ReadXmlSchema(ms);
+                    }
                 }
                 for (int i = 0; i < destination.Rows.Count; i++)
                 {
